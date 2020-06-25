@@ -1,0 +1,51 @@
+From 0a3cc5a6a9500e03a4c9966f11c45fbf41cadd82 Mon Sep 17 00:00:00 2001
+From: Damian Wrobel <dwrobel@ertelnet.rybnik.pl>
+Date: Mon, 22 Jun 2020 09:42:07 +0200
+Subject: [PATCH] Fix compilation error
+
+Fixes the following compilation errors:
+ error: 'WL_OUTPUT_DONE_SINCE_VERSION' was not declared in this scope
+     if (version < WL_OUTPUT_DONE_SINCE_VERSION) {
+
+ error: 'WL_POINTER_FRAME_SINCE_VERSION' was not declared in this scope
+     if (mParent->mVersion < WL_POINTER_FRAME_SINCE_VERSION) {
+
+Signed-off-by: Damian Wrobel <dwrobel@ertelnet.rybnik.pl>
+---
+ src/client/qwaylandinputdevice.cpp | 4 ++++
+ src/client/qwaylandscreen.cpp      | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/client/qwaylandinputdevice.cpp b/src/client/qwaylandinputdevice.cpp
+index 320e3404..18c5fd4d 100644
+--- a/src/client/qwaylandinputdevice.cpp
++++ b/src/client/qwaylandinputdevice.cpp
+@@ -73,6 +73,10 @@
+ 
+ #include <QtGui/QGuiApplication>
+ 
++#ifndef WL_POINTER_FRAME_SINCE_VERSION
++#define WL_POINTER_FRAME_SINCE_VERSION 5
++#endif
++
+ QT_BEGIN_NAMESPACE
+ 
+ namespace QtWaylandClient {
+diff --git a/src/client/qwaylandscreen.cpp b/src/client/qwaylandscreen.cpp
+index e7079683..768e09b3 100644
+--- a/src/client/qwaylandscreen.cpp
++++ b/src/client/qwaylandscreen.cpp
+@@ -49,6 +49,10 @@
+ #include <qpa/qwindowsysteminterface.h>
+ #include <qpa/qplatformwindow.h>
+ 
++#ifndef WL_OUTPUT_DONE_SINCE_VERSION
++#define WL_OUTPUT_DONE_SINCE_VERSION 2
++#endif
++
+ QT_BEGIN_NAMESPACE
+ 
+ namespace QtWaylandClient {
+-- 
+2.24.1
+

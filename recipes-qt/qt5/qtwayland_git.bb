@@ -16,6 +16,8 @@ LIC_FILES_CHKSUM = " \
 # Patches from https://github.com/meta-qt5/qtwayland/commits/b5.14
 # 5.14.meta-qt5.1
 SRC_URI += "file://0001-tst_seatv4-Include-array.patch"
+# Fix compilation error
+SRC_URI += "file://0002-Fix-compilation-error.patch"
 
 PACKAGECONFIG ?= " \
     wayland-client \
@@ -47,4 +49,4 @@ BBCLASSEXTEND =+ "native nativesdk"
 
 # The same issue as in qtbase:
 # http://errors.yoctoproject.org/Errors/Details/152641/
-LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+#LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
