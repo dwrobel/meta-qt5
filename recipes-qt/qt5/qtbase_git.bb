@@ -169,8 +169,8 @@ QT_CONFIG_FLAGS_GOLD = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', '-
 # https://github.com/meta-qt5/meta-qt5/pull/181#issuecomment-484425112
 # resulting in do_configure failure:
 # http://errors.yoctoproject.org/Errors/Details/237856/
-QT_CONFIG_FLAGS_GOLD = "-no-use-gold-linker"
-LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+#QT_CONFIG_FLAGS_GOLD = "-no-use-gold-linker"
+#LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
 QT_CONFIG_FLAGS += " \
     ${QT_CONFIG_FLAGS_GOLD} \
