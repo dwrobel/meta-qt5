@@ -18,6 +18,8 @@ LIC_FILES_CHKSUM = " \
 SRC_URI += "file://0001-tst_seatv4-Include-array.patch"
 # Fix compilation error
 SRC_URI += "file://0002-Fix-compilation-error.patch"
+# Fix for RDK based build
+SRC_URI += "file://0003-Make-it-working-on-RDK-based-build.patch"
 
 PACKAGECONFIG ?= " \
     wayland-client \
